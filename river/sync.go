@@ -498,7 +498,7 @@ func (r *River) getFieldValue(col *schema.TableColumn, fieldType string, value i
 			v := reflect.ValueOf(value)
 			switch v.Kind() {
 			case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
-				fieldValue = r.makeReqColumnData(col, time.Unix(v.Int(), 0).Format(mysql.TimeFormat))
+				fieldValue = r.makeReqColumnData(col, time.Unix(v.Int()/1000, 0).Format(mysql.TimeFormat))
 			}
 		}
 	}
